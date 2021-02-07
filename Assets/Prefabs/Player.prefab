@@ -4014,7 +4014,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turret: {fileID: 5654168968083799887}
   turretTurnSpeed: 60
-  cannonPower: 120
+  cannonPower: 101
   maxSpeed: 3
   acceleration: 100
   turnSpeed: 60
@@ -4026,11 +4026,11 @@ MonoBehaviour:
   - collider: {fileID: 6486943812399885386}
     number: 0.2
   - collider: {fileID: 3316380605352378667}
-    number: 0.8
+    number: 0.7
   - collider: {fileID: 8293096695022707109}
-    number: 0.8
+    number: 0.7
   - collider: {fileID: 8664701341271600641}
-    number: 0.8
+    number: 0.7
   healthChangedEvent:
     m_PersistentCalls:
       m_Calls:

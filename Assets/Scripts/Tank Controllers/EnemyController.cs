@@ -4,9 +4,9 @@ using UnityEngine;
 public class EnemyController : TankController
 {
     [SerializeField] private GameObject healthBar;
+    private GameObject player;
     private Vector3 moveDestination;
-    private float xRange = 13;
-    private float zRange = 6;
+    private float xRange = 16, zRange = 8;
     private bool arrived;
     private Tank tank;
     private HealthBar privateHealthBar;
@@ -15,6 +15,11 @@ public class EnemyController : TankController
     {
         tank = GetComponent<Tank>();
         tank.destroyed.AddListener(OnTankDestroy);
+    }
+
+    private void Start()
+    {
+        player = GameObject.Find("Player");
     }
 
     private void OnEnable()
@@ -26,10 +31,14 @@ public class EnemyController : TankController
         // Move destination and aim point will be updated
         // with a certain interval
         StartCoroutine(MoveDestinationCoroutine());
-        StartCoroutine(TurretDestinationCoroutine());
+        bool cleverAiming = Random.Range(1, 4) == 3;
+        if (cleverAiming)
+            StartCoroutine(TurretCleverDestinationCoroutine());
+        else
+            StartCoroutine(TurretDestinationCoroutine());
+        
         privateHealthBar = ObjectPooler.HealthbarPooler.GetPooledObject().GetComponent<HealthBar>();
         privateHealthBar.gameObject.SetActive(true);
-        //privateHealthBar = Instantiate(healthBar, GameObject.Find("World Space Canvas").transform).GetComponent<HealthBar>();
     }
 
     private void Update()
@@ -41,7 +50,8 @@ public class EnemyController : TankController
 
     private void LateUpdate()
     {
-        privateHealthBar.GetComponent<RectTransform>().localPosition = new Vector3(transform.position.x, transform.position.z, 0);
+        if (privateHealthBar != null)
+            privateHealthBar.GetComponent<RectTransform>().localPosition = new Vector3(transform.position.x, transform.position.z, 0);
     }
 
     private void OnTankDestroy()
@@ -51,12 +61,14 @@ public class EnemyController : TankController
 
     private void OnDisable()
     {
-        privateHealthBar.gameObject.SetActive(false);
+        if (privateHealthBar != null)
+            privateHealthBar.gameObject.SetActive(false);
     }
 
     public void HealthChanged(float health)
     {
-        privateHealthBar.SetHealth(health);
+        if (privateHealthBar != null)
+            privateHealthBar.SetHealth(health);
     }
 
     private void ManageMove()
@@ -112,8 +124,18 @@ public class EnemyController : TankController
     {
         while (true)
         {
-            mousePosition = new Vector3(Random.Range(-xRange, xRange), 0, Random.Range(-zRange, zRange));
+            aimPosition = new Vector3(Random.Range(-xRange, xRange), 0, Random.Range(-zRange, zRange));
             yield return new WaitForSeconds(Random.Range(tank.rechargeDurationRead, tank.rechargeDurationRead + 2));
+        }
+    }
+
+    //Update aiming point based on player's position
+    private IEnumerator TurretCleverDestinationCoroutine()
+    {
+        while (true)
+        {
+            aimPosition = player.transform.position;
+            yield return new WaitForSeconds(.5f);
         }
     }
 

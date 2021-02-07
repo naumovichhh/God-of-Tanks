@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1788282192902865021}
   - component: {fileID: 1788282192902060263}
   - component: {fileID: 1788282192900984067}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: barrel_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902800937}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 1788282192902809685}
   - component: {fileID: 1788282192902059953}
   - component: {fileID: 1788282192901043235}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: barrel_
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902788657}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_bone_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 1788282192902801885}
   - component: {fileID: 1788282192901965177}
   - component: {fileID: 1788282192900831517}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: barrel_ 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,7 +321,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1788282192902782137}
   - component: {fileID: 1788282192916862393}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_track
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,7 +414,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902776351}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_bone_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -446,7 +446,7 @@ GameObject:
   - component: {fileID: 1788282192902869349}
   - component: {fileID: 1788282192902087983}
   - component: {fileID: 1788282192901003639}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_wheel_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -523,7 +523,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902781237}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_bone_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -555,7 +555,7 @@ GameObject:
   - component: {fileID: 1788282192902787947}
   - component: {fileID: 1788282192902083493}
   - component: {fileID: 1788282192901031931}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_top_wheel_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -632,7 +632,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902869513}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: turret_type1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -666,7 +666,7 @@ GameObject:
   - component: {fileID: 1788282192902876149}
   - component: {fileID: 1788282192902084921}
   - component: {fileID: 1788282192901010619}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_wheel_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -745,7 +745,7 @@ GameObject:
   - component: {fileID: 1788282192902826985}
   - component: {fileID: 1788282192902039449}
   - component: {fileID: 1788282192900797623}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_top_wheel_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -822,7 +822,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902830825}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_bone_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -855,7 +855,7 @@ GameObject:
   - component: {fileID: 5215850958311763938}
   - component: {fileID: -5930285143421584250}
   - component: {fileID: 8955377818190642843}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Strong Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -940,8 +940,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turret: {fileID: 3474923326941541521}
-  turretTurnSpeed: 30
-  cannonPower: 90
+  turretTurnSpeed: 40
+  cannonPower: 70
   maxSpeed: 3
   acceleration: 150
   turnSpeed: 70
@@ -972,6 +972,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  destroyed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1788282192903040947
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,7 +986,7 @@ GameObject:
   - component: {fileID: 1788282192902761381}
   - component: {fileID: 1788282192902043129}
   - component: {fileID: 1788282192900999925}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: body_door_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1060,7 +1063,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902770793}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_bone_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1092,7 +1095,7 @@ GameObject:
   - component: {fileID: 1788282192902764219}
   - component: {fileID: 1788282192902017869}
   - component: {fileID: 1788282192900794453}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_Idler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1169,7 +1172,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902769697}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: barrel_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1204,7 +1207,7 @@ GameObject:
   - component: {fileID: 1788282192902785507}
   - component: {fileID: 1788282192902056983}
   - component: {fileID: 1788282192900796897}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: body_door_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1287,7 +1290,7 @@ GameObject:
   - component: {fileID: 1612082121595520589}
   - component: {fileID: 8901900526970201021}
   - component: {fileID: 723835296614371817}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1372,8 +1375,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.2697687, y: 0.17961836, z: 1.680434}
-  m_Center: {x: 0.006101926, y: -1.9932321, z: 0.8311767}
+  m_Size: {x: 2.2697687, y: 0.17961815, z: 1.5524983}
+  m_Center: {x: 0.006101926, y: -1.9932321, z: 0.76720893}
 --- !u!65 &1612082121595520589
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1385,8 +1388,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.26757318, y: 4.0341997, z: 1.6804343}
-  m_Center: {x: -1.0339931, y: -0.022182066, z: 0.8311767}
+  m_Size: {x: 0.26757318, y: 4.0341997, z: 1.552498}
+  m_Center: {x: -1.0339931, y: -0.022182066, z: 0.7672089}
 --- !u!65 &8901900526970201021
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1398,8 +1401,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3249629, y: 4.0638638, z: 1.680434}
-  m_Center: {x: 1.0072017, y: -0.031726755, z: 0.8311767}
+  m_Size: {x: 0.3249629, y: 4.0638638, z: 1.552498}
+  m_Center: {x: 1.0072017, y: -0.031726755, z: 0.7672089}
 --- !u!65 &723835296614371817
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1411,8 +1414,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.3197682, y: 0.22062892, z: 1.680434}
-  m_Center: {x: -0.0008598963, y: 1.9101295, z: 0.8311767}
+  m_Size: {x: 2.3197682, y: 0.22062892, z: 1.552498}
+  m_Center: {x: -0.0008598963, y: 1.9101295, z: 0.7672089}
 --- !u!1 &1788282192903046349
 GameObject:
   m_ObjectHideFlags: 0
@@ -1422,7 +1425,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902875827}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1464,7 +1467,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902855827}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_bone_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1494,7 +1497,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902789095}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_bone_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1524,7 +1527,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902851929}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_bone_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1557,7 +1560,7 @@ GameObject:
   - component: {fileID: 1788282192901977409}
   - component: {fileID: 1788282192900839259}
   - component: {fileID: 401002435250808535}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: barrel_mainPart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1650,7 +1653,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902754969}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1694,7 +1697,7 @@ GameObject:
   - component: {fileID: 1788282192902861089}
   - component: {fileID: 1788282192901979705}
   - component: {fileID: 1788282192901024203}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_wheel_07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1771,7 +1774,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902861597}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_bone_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1801,7 +1804,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902811811}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_bone_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1833,7 +1836,7 @@ GameObject:
   - component: {fileID: 1788282192902758567}
   - component: {fileID: 1788282192902034297}
   - component: {fileID: 1788282192900841195}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_DriveWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1912,7 +1915,7 @@ GameObject:
   - component: {fileID: 1788282192902768243}
   - component: {fileID: 1788282192902023969}
   - component: {fileID: 1788282192900832129}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: body_armor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1991,7 +1994,7 @@ GameObject:
   - component: {fileID: 1788282192902790165}
   - component: {fileID: 1788282192902057297}
   - component: {fileID: 1788282192900829153}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_wheel_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2070,7 +2073,7 @@ GameObject:
   - component: {fileID: 1788282192902829485}
   - component: {fileID: 1788282192901985555}
   - component: {fileID: 1788282192901045879}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: turret_type2_Rdoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2149,7 +2152,7 @@ GameObject:
   - component: {fileID: 1788282192902824537}
   - component: {fileID: 1788282192902073975}
   - component: {fileID: 1788282192901002167}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: turret_type1_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2228,7 +2231,7 @@ GameObject:
   - component: {fileID: 1788282192902794293}
   - component: {fileID: 1788282192902069813}
   - component: {fileID: 1788282192901032417}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_top_wheel_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2307,7 +2310,7 @@ GameObject:
   - component: {fileID: 1788282192902859295}
   - component: {fileID: 1788282192902040147}
   - component: {fileID: 1788282192900825643}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_wheel_08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2386,7 +2389,7 @@ GameObject:
   - component: {fileID: 1788282192902751809}
   - component: {fileID: 1788282192901975141}
   - component: {fileID: 1788282192901011637}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_wheel_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2463,7 +2466,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902807251}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_bone_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2495,7 +2498,7 @@ GameObject:
   - component: {fileID: 1788282192902830547}
   - component: {fileID: 1788282192902064603}
   - component: {fileID: 1788282192901008371}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: turret_type2_Ldoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2572,7 +2575,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902794517}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: turret_type2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2607,7 +2610,7 @@ GameObject:
   - component: {fileID: 1788282192902787441}
   - component: {fileID: 1788282192902019405}
   - component: {fileID: 1788282192900981763}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_wheel_07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2684,7 +2687,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902787077}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_bone_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2714,7 +2717,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902854687}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_bone_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2745,7 +2748,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1788282192902772303}
   - component: {fileID: 1788282192916873607}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_track
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2838,7 +2841,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902790759}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_bone_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2868,7 +2871,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902881113}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_bone_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2900,7 +2903,7 @@ GameObject:
   - component: {fileID: 1788282192902854613}
   - component: {fileID: 1788282192902042503}
   - component: {fileID: 1788282192900999285}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_wheel_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2979,7 +2982,7 @@ GameObject:
   - component: {fileID: 1788282192902871845}
   - component: {fileID: 1788282192902058037}
   - component: {fileID: 1788282192901031949}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: decoration_wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3058,7 +3061,7 @@ GameObject:
   - component: {fileID: 1788282192902861647}
   - component: {fileID: 1788282192902061447}
   - component: {fileID: 1788282192900993733}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3140,7 +3143,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902857673}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_bone_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3170,7 +3173,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902829333}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_bone_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3200,7 +3203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902849989}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_bone_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3232,7 +3235,7 @@ GameObject:
   - component: {fileID: 1788282192902876667}
   - component: {fileID: 1788282192901987607}
   - component: {fileID: 1788282192900981029}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_top_wheel_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3311,7 +3314,7 @@ GameObject:
   - component: {fileID: 1788282192902853601}
   - component: {fileID: 1788282192902042843}
   - component: {fileID: 1788282192901043291}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_wheel_08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3388,7 +3391,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902857545}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_bone_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3420,7 +3423,7 @@ GameObject:
   - component: {fileID: 1788282192902768011}
   - component: {fileID: 1788282192902032341}
   - component: {fileID: 1788282192901007193}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_wheel_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3499,7 +3502,7 @@ GameObject:
   - component: {fileID: 1788282192902769121}
   - component: {fileID: 1788282192902074745}
   - component: {fileID: 1788282192900833971}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_wheel_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3578,7 +3581,7 @@ GameObject:
   - component: {fileID: 1788282192902757791}
   - component: {fileID: 1788282192902032733}
   - component: {fileID: 1788282192900817873}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_wheel_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3657,7 +3660,7 @@ GameObject:
   - component: {fileID: 1788282192902827647}
   - component: {fileID: 1788282192902082061}
   - component: {fileID: 1788282192901001465}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: barrel_mainPart 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3736,7 +3739,7 @@ GameObject:
   - component: {fileID: 1788282192902775759}
   - component: {fileID: 1788282192902079711}
   - component: {fileID: 1788282192900845041}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_wheel_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3815,7 +3818,7 @@ GameObject:
   - component: {fileID: 1788282192902827045}
   - component: {fileID: 1788282192902060353}
   - component: {fileID: 1788282192901045493}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_top_wheel_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3892,7 +3895,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902862591}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_bone_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3922,7 +3925,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902771983}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3966,7 +3969,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902784581}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: track
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3998,7 +4001,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902790633}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_bone_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4030,7 +4033,7 @@ GameObject:
   - component: {fileID: 1788282192902868529}
   - component: {fileID: 1788282192902031895}
   - component: {fileID: 1788282192901041281}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: barrel_mainPart 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4109,7 +4112,7 @@ GameObject:
   - component: {fileID: 1788282192902851349}
   - component: {fileID: 1788282192902073017}
   - component: {fileID: 1788282192901018667}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: decoration_wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4186,7 +4189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902830421}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: barrel_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4220,7 +4223,7 @@ GameObject:
   - component: {fileID: 1788282192902856511}
   - component: {fileID: 1788282192902064013}
   - component: {fileID: 1788282192900821789}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_wheel_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4297,7 +4300,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902765881}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_bone_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4329,7 +4332,7 @@ GameObject:
   - component: {fileID: 1788282192902831647}
   - component: {fileID: 1788282192901976185}
   - component: {fileID: 1788282192901024109}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_wheel_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4408,7 +4411,7 @@ GameObject:
   - component: {fileID: 1788282192902867909}
   - component: {fileID: 1788282192902076687}
   - component: {fileID: 1788282192900794953}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: turret_type2_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4487,7 +4490,7 @@ GameObject:
   - component: {fileID: 1788282192902781073}
   - component: {fileID: 1788282192902069131}
   - component: {fileID: 1788282192901011275}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: turret_type1_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4566,7 +4569,7 @@ GameObject:
   - component: {fileID: 1788282192902860433}
   - component: {fileID: 1788282192901990319}
   - component: {fileID: 1788282192901032167}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_DriveWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4643,7 +4646,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902828901}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_bone_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4675,7 +4678,7 @@ GameObject:
   - component: {fileID: 1788282192902850225}
   - component: {fileID: 1788282192902032897}
   - component: {fileID: 1788282192900823937}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_wheel_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4754,7 +4757,7 @@ GameObject:
   - component: {fileID: 1788282192902865185}
   - component: {fileID: 1788282192902031389}
   - component: {fileID: 1788282192901013949}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_top_wheel_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4833,7 +4836,7 @@ GameObject:
   - component: {fileID: 1788282192902829369}
   - component: {fileID: 1788282192902019865}
   - component: {fileID: 1788282192900981605}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_top_wheel_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4912,7 +4915,7 @@ GameObject:
   - component: {fileID: 1788282192902753877}
   - component: {fileID: 1788282192901987649}
   - component: {fileID: 1788282192901011053}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_top_wheel_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4991,7 +4994,7 @@ GameObject:
   - component: {fileID: 1788282192902769731}
   - component: {fileID: 1788282192902094257}
   - component: {fileID: 1788282192901035405}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_Idler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5070,7 +5073,7 @@ GameObject:
   - component: {fileID: 1788282192902825497}
   - component: {fileID: 1788282192901980933}
   - component: {fileID: 1788282192901025095}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: turret_armor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5149,7 +5152,7 @@ GameObject:
   - component: {fileID: 1788282192902874445}
   - component: {fileID: 1788282192901970407}
   - component: {fileID: 1788282192900822605}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: body_door_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5226,7 +5229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788282192902793833}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: L_bone_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5256,7 +5259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3474923326941541521}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5286,7 +5289,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4544093447102656198}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fire Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}

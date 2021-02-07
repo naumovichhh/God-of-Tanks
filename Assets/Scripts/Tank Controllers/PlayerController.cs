@@ -38,7 +38,8 @@ public class PlayerController : TankController
 
     public void HealthChanged(float health)
     {
-        healthBar.SetHealth(health);
+        if (healthBar != null)
+            healthBar.SetHealth(health);
     }
 
     private void HandleInput()
@@ -47,14 +48,16 @@ public class PlayerController : TankController
         horizontalInput = Input.GetAxis("Horizontal");
         if (verticalInput < -0.01f)
             horizontalInput = -horizontalInput;
-        mousePosition = UnityEngine.Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        aimPosition = UnityEngine.Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (Input.GetMouseButton(0))
             fireEvent.Invoke();
     }
 
     private void HandleUI()
     {
-        rechargeBar.SetValue(tank.rechargeProcess);
+        if (rechargeBar != null)
+            rechargeBar.SetValue(tank.rechargeProcess);
+        
         SetAim();
     }
 
@@ -65,7 +68,7 @@ public class PlayerController : TankController
         aim.GetComponent<RectTransform>().localPosition = new Vector3(aimPosition.x, aimPosition.z, 0);*/
 
         float framesToReachMouse = tank.turretRotationAngle / tank.turretTurnSpeed / Time.deltaTime;
-        float distanceToMouse = (mousePosition - new Vector3(tank.turret.position.x, mousePosition.y, tank.turret.position.z)).magnitude;
+        float distanceToMouse = (base.aimPosition - new Vector3(tank.turret.position.x, base.aimPosition.y, tank.turret.position.z)).magnitude;
         if (framesToReachMouse > 1)
             distance = distance + (distanceToMouse - distance) / framesToReachMouse;
         else

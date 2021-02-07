@@ -4,7 +4,7 @@ using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Tank : ShellCollider, ObjectToSpawn
+public class Tank : ShellCollider, IObjectToSpawn
 {
     public Transform turret;
     public float turretTurnSpeed;
@@ -25,7 +25,6 @@ public class Tank : ShellCollider, ObjectToSpawn
     private float _health;
     public UnityFloatEvent healthChangedEvent;
     public UnityEvent destroyed;
-    public event Action evenat;
 
     public float rechargeDurationRead => rechargeDuration;
     public float rechargeProcess
@@ -39,7 +38,7 @@ public class Tank : ShellCollider, ObjectToSpawn
         get
         {
             Vector3 rotationDestination, rotationVector;
-            rotationDestination = new Vector3(tankController.mousePosition.x, physicalTurret.position.y, tankController.mousePosition.z);
+            rotationDestination = new Vector3(tankController.aimPosition.x, physicalTurret.position.y, tankController.aimPosition.z);
             rotationVector = (rotationDestination - physicalTurret.position).normalized;
             return Vector3.Angle(rotationVector, -physicalTurret.up);
         }
@@ -223,9 +222,9 @@ public class Tank : ShellCollider, ObjectToSpawn
     private void RotateTurret()
     {
         Vector3 rotationDestination, rotationVector;
-        if (tankController.mousePosition != null)
+        if (tankController.aimPosition != null)
         {
-            rotationDestination = new Vector3(tankController.mousePosition.x, physicalTurret.position.y, tankController.mousePosition.z);
+            rotationDestination = new Vector3(tankController.aimPosition.x, physicalTurret.position.y, tankController.aimPosition.z);
             rotationVector = (rotationDestination - physicalTurret.position).normalized;
             // If distance between direction to mouse position (rotationVector) and barrel direction (-physicalTurret.up)
             // is more than very little, then execute rotation

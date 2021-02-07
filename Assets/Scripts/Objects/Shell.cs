@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Shell : MonoBehaviour
@@ -16,6 +17,7 @@ public class Shell : MonoBehaviour
         }
 
         ignored.Clear();
+        StartCoroutine(SetTimeout());
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -26,5 +28,11 @@ public class Shell : MonoBehaviour
         {
             shellCollider.Hit(collision, this);
         }
+    }
+
+    private IEnumerator SetTimeout()
+    {
+        yield return new WaitForSeconds(7f);
+        gameObject.SetActive(false);
     }
 }

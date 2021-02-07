@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ObjectToSpawn
+public interface IObjectToSpawn
 {
     bool IsOverlapped();
 }
