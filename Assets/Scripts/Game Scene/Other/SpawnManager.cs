@@ -6,14 +6,18 @@ using Random = UnityEngine.Random;
 
 public class SpawnManager : MonoBehaviour
 {
-    private float insideXMax = 16, insideZMax = 8;
-    private float outsideXMax = 40, outsideZMax = 20;
-    private float outsideXMin = 20, outsideZMin = 10;
+    private const float insideXMax = 16, insideZMax = 8;
+    private const float outsideXMax = 36, outsideZMax = 18;
+    private const float outsideXMin = 20, outsideZMin = 10;
+    [SerializeField] WaveInformation waveInformation;
     // Spawn manager should contain four poolers:
     // for enemies, strong enemies, shells, medicines,
     // which are stored in dictionary
     private Dictionary<string, ObjectPooler> poolers = new Dictionary<string, ObjectPooler>();
     private float enemySpawnFrequencyCoefficient = 1;
+    private bool enemySpawnPause;
+    private int waveNumber = 1;
+    private const float pauseDuration = 25;
 
     private void Start()
     {
@@ -43,7 +47,23 @@ public class SpawnManager : MonoBehaviour
             yield return new WaitForSeconds(waveTimer);
             waveTimer *= 1.33f;
             enemySpawnFrequencyCoefficient = 1;
+            enemySpawnPause = true;
+            StartCoroutine(BreakPause());
+            StartCoroutine(NotifyUserAboutWaves());
         }
+    }
+
+    private IEnumerator BreakPause()
+    {
+        yield return new WaitForSeconds(pauseDuration);
+        enemySpawnPause = false;
+    }
+
+    private IEnumerator NotifyUserAboutWaves()
+    {
+        yield return new WaitForSeconds(8);
+        ++waveNumber;
+        waveInformation.NotifyWaveNumber(waveNumber);
     }
 
     private IEnumerator SpawnMedicines()
@@ -60,6 +80,9 @@ public class SpawnManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(UnityEngine.Random.Range(10, 15) * enemySpawnFrequencyCoefficient);
+            if (enemySpawnPause)
+                yield return new WaitForSeconds(pauseDuration);
+
             Spawn("Enemy", false);
         }
     }
@@ -69,6 +92,9 @@ public class SpawnManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(UnityEngine.Random.Range(30, 45) * enemySpawnFrequencyCoefficient);
+            if (enemySpawnPause)
+                yield return new WaitForSeconds(pauseDuration);
+            
             Spawn("Strong Enemy", false);
         }
     }

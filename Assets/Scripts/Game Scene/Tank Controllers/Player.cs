@@ -1,10 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerController : TankController
+public class Player : TankController
 {
     public HealthBar healthBar;
     public RechargeBar rechargeBar;
+    public RedDamageScreen redDamageScreen;
     public GameObject aim;
     private Tank tank;
     private float distance = 5;
@@ -12,7 +15,8 @@ public class PlayerController : TankController
     private void Awake()
     {
         tank = GetComponent<Tank>();
-        tank.destroyed.AddListener(OnTankDestroy);
+        tank.destroyedEvent += OnTankDestroy;
+        tank.hitEvent += OnHit;
     }
 
     private void Start()
@@ -31,15 +35,29 @@ public class PlayerController : TankController
         HandleUI();
     }
 
+    private void OnHit(float damage)
+    {
+        float heaviness = damage / 50;
+        heaviness = heaviness <= 1 ? heaviness : 1;
+        float alpha = (float)Math.Sqrt(heaviness) * .4f;
+        redDamageScreen.Show(alpha);
+    }
+
     private void OnTankDestroy()
     {
-        SceneManager.LoadScene("Game over");
+        StartCoroutine(LoadGameOver());
     }
 
     public void HealthChanged(float health)
     {
         if (healthBar != null)
             healthBar.SetHealth(health);
+    }
+
+    private IEnumerator LoadGameOver()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("Game over");
     }
 
     private void HandleInput()

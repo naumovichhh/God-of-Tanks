@@ -14,16 +14,14 @@ public class EnemyController : TankController
     private void Awake()
     {
         tank = GetComponent<Tank>();
-        tank.destroyed.AddListener(OnTankDestroy);
-    }
-
-    private void Start()
-    {
-        player = GameObject.Find("Player");
+        tank.destroyedEvent += OnTankDestroy;
     }
 
     private void OnEnable()
     {
+        if (player == null)
+            player = GameObject.Find("Player");
+        
         moveDestination = transform.position;
         // at spawn enemy tank won't move to another
         // point immediately
@@ -31,7 +29,7 @@ public class EnemyController : TankController
         // Move destination and aim point will be updated
         // with a certain interval
         StartCoroutine(MoveDestinationCoroutine());
-        bool cleverAiming = Random.Range(1, 4) == 3;
+        bool cleverAiming = Random.Range(1, 3) == 2;
         if (cleverAiming)
             StartCoroutine(TurretCleverDestinationCoroutine());
         else

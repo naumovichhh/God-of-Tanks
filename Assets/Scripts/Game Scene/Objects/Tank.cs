@@ -20,11 +20,18 @@ public class Tank : ShellCollider, IObjectToSpawn
     private Dictionary<Collider, float> armor = new Dictionary<Collider, float>();
     new private Rigidbody rigidbody;
     private TankController tankController;
-    private bool fire;
+    private bool fireFlag;
     private Stopwatch rechargeStopwatch;
     private float _health;
     public UnityFloatEvent healthChangedEvent;
-    public UnityEvent destroyed;
+    public event Action destroyedEvent;
+    public event Action fireEvent;
+    public event Action<float> hitEvent;
+    public event Action turretStartEvent, turretEndEvent;
+    public event Action driveStartEvent, driveEndEvent;
+    public event Action bounceEvent;
+    private bool turretRotateFlag;
+    private bool driveFlag;
 
     public float rechargeDurationRead => rechargeDuration;
     public float rechargeProcess
@@ -89,7 +96,7 @@ public class Tank : ShellCollider, IObjectToSpawn
 
     public void FireSubscriber()
     {
-        fire = true;
+        fireFlag = true;
     }
 
     public void Healed(float healthPoints)
@@ -127,15 +134,26 @@ public class Tank : ShellCollider, IObjectToSpawn
             shell.transform.forward = Vector3.Reflect(shell.transform.forward, collisionNormal);
             shell.GetComponent<Rigidbody>().velocity = shell.transform.forward * shell.GetComponent<Rigidbody>().velocity.magnitude;
             shell.damage *= 0.7f;
+            bounceEvent?.Invoke();
         }
 
         void GetDamaged()
         {
-            _health -= CountDamage();
+            float damageAmount = CountDamage();
+            if (damageAmount == 0)
+            {
+                bounceEvent?.Invoke();
+            }
+            else
+            {
+                hitEvent?.Invoke(damageAmount);
+            }
+
+            _health -= damageAmount;
 
             healthChangedEvent.Invoke(_health);
             if (_health <= 0)
-                destroyed.Invoke();
+                destroyedEvent?.Invoke();
             
             shell.gameObject.SetActive(false);
         }
@@ -158,6 +176,23 @@ public class Tank : ShellCollider, IObjectToSpawn
         
         // Turn left of right
         transform.Rotate(Vector3.up, tankController.horizontalInput * turnSpeed * Time.fixedDeltaTime);
+
+        if (tankController.verticalInput != 0 || tankController.horizontalInput != 0)
+        {
+            if (!driveFlag)
+            {
+                driveFlag = true;
+                driveStartEvent?.Invoke();
+            }
+        }
+        else
+        {
+            if (driveFlag)
+            {
+                driveFlag = false;
+                driveEndEvent?.Invoke();
+            }
+        }
     }
 
     private void Recharge()
@@ -178,17 +213,18 @@ public class Tank : ShellCollider, IObjectToSpawn
     private void Fire()
     {
         GameObject shell;
-        // Fire when recharge completed and fire requested
-        if (fire && rechargeProcess == 1)
+        // Fire when recharge completed and fireFlag requested
+        if (fireFlag && rechargeProcess == 1)
         {
             ActivateShell();
             rechargeProcess = 0;
             rechargeStopwatch.Start();
+            fireEvent?.Invoke();
         }
 
-        // Reset flag of fire request always
-        if (fire)
-            fire = false;
+        // Reset flag of fireFlag request always
+        if (fireFlag)
+            fireFlag = false;
         
         void ActivateShell()
         {
@@ -231,6 +267,19 @@ public class Tank : ShellCollider, IObjectToSpawn
             if (Vector3.Distance(rotationVector, -physicalTurret.up) > 0.001f)
             {
                 ActuallyRotate();
+                if (!turretRotateFlag)
+                {
+                    turretRotateFlag = true;
+                    turretStartEvent?.Invoke();
+                }
+            }
+            else
+            {
+                if (turretRotateFlag)
+                {
+                    turretRotateFlag = false;
+                    turretEndEvent?.Invoke();
+                }
             }
         }
 

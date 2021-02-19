@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 461570382}
   - component: {fileID: 461570383}
   m_Layer: 0
-  m_Name: InitializeScript
+  m_Name: Game Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
