@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RestartButton : MonoBehaviour
+public class OkButton : MonoBehaviour
 {
-    public void RestartGame()
+    public void OnClick()
     {
         SceneManager.LoadScene("Menu");
     }

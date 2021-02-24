@@ -1151,7 +1151,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.92
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1586,7 +1586,7 @@ MonoBehaviour:
   objectToPool: {fileID: 773139272663641737, guid: b28e98af69b2d994bb5ae25a64fc65fa,
     type: 3}
   amountToPool: 10
-  objectType: Medicine
+  objectType: Toolkit
 --- !u!1 &917258998
 GameObject:
   m_ObjectHideFlags: 0
@@ -3009,11 +3009,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 369761126754950454, guid: b3fda8f9d01a36a479c08b63a5e34be3,
-        type: 3}
-      propertyPath: rolloffMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6486815722200293707, guid: b3fda8f9d01a36a479c08b63a5e34be3,
         type: 3}
       propertyPath: m_Name

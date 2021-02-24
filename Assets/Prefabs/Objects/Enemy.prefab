@@ -2502,8 +2502,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.0401597, y: 0.20019963, z: 1.639961}
-  m_Center: {x: 0.0097935395, y: -2.0049064, z: 0.8124647}
+  m_Size: {x: 2.0401597, y: 0.20019963, z: 1.970306}
+  m_Center: {x: 0.0097935395, y: -2.0049064, z: 0.9776371}
 --- !u!65 &7009693410623526705
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2515,8 +2515,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.17724076, y: 4.0446486, z: 1.639961}
-  m_Center: {x: 0.9470711, y: -0.06817043, z: 0.8124647}
+  m_Size: {x: 0.17724076, y: 4.0446486, z: 1.970306}
+  m_Center: {x: 0.9470711, y: -0.06817043, z: 0.9776371}
 --- !u!65 &4043701274219302765
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2528,8 +2528,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.22255182, y: 4.043079, z: 1.639961}
-  m_Center: {x: -0.92459655, y: -0.069405034, z: 0.8124647}
+  m_Size: {x: 0.22255182, y: 4.043079, z: 1.9703058}
+  m_Center: {x: -0.92459655, y: -0.06940504, z: 0.9776371}
 --- !u!65 &8479962108726497905
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2541,8 +2541,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.0418596, y: 0.16630487, z: 1.639961}
-  m_Center: {x: -0.00074217713, y: 1.8834507, z: 0.8124647}
+  m_Size: {x: 2.0418596, y: 0.16630487, z: 1.970306}
+  m_Center: {x: -0.00074217713, y: 1.8834507, z: 0.9776371}
 --- !u!1 &595396603939537811
 GameObject:
   m_ObjectHideFlags: 0
@@ -5058,12 +5058,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turret: {fileID: 3711445389175330499}
   turretTurnSpeed: 50
-  cannonPower: 30
+  cannonPower: 32
   maxSpeed: 2
   acceleration: 100
   turnSpeed: 50
-  rechargeDuration: 6
-  shellVelocity: 13
+  rechargeDuration: 5
+  shellVelocity: 15
   firePoint: {fileID: 8904817415366926284}
   physicalTurret: {fileID: 595396603939839351}
   armorList:
@@ -5089,9 +5089,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  destroyed:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &595396603939611157
 GameObject:
   m_ObjectHideFlags: 0

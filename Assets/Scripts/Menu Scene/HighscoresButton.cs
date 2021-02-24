@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StartButton : MonoBehaviour
+public class HighscoresButton : MonoBehaviour
 {
     public void OnClick()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Highscores");
     }
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Medicine : MonoBehaviour, IObjectToSpawn
+public class Toolkit : MonoBehaviour, IObjectToSpawn
 {
     private void OnTriggerEnter(Collider other)
     {

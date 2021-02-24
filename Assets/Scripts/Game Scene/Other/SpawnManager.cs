@@ -28,7 +28,7 @@ public class SpawnManager : MonoBehaviour
             poolers.Add(pooler.objectType, pooler);
         }
 
-        StartCoroutine(SpawnMedicines());
+        StartCoroutine(SpawnToolkits());
         StartCoroutine(SpawnEnemies());
         StartCoroutine(SpawnStrongEnemies());
         StartCoroutine(ManageWaves());
@@ -66,12 +66,12 @@ public class SpawnManager : MonoBehaviour
         waveInformation.NotifyWaveNumber(waveNumber);
     }
 
-    private IEnumerator SpawnMedicines()
+    private IEnumerator SpawnToolkits()
     {
         while (true)
         {
             yield return new WaitForSeconds(UnityEngine.Random.Range(23, 30));
-            Spawn("Medicine", true);
+            Spawn("Toolkit", true);
         }
     }
 
@@ -91,7 +91,7 @@ public class SpawnManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(UnityEngine.Random.Range(30, 45) * enemySpawnFrequencyCoefficient);
+            yield return new WaitForSeconds(UnityEngine.Random.Range(18, 27) * enemySpawnFrequencyCoefficient);
             if (enemySpawnPause)
                 yield return new WaitForSeconds(pauseDuration);
             

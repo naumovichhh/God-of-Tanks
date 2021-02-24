@@ -71,6 +71,14 @@ public class Tank : ShellCollider, IObjectToSpawn
         rechargeStopwatch.Start();
     }
 
+    private void Update()
+    {
+        if (tankController.fireInput > 0)
+        {
+            fireFlag = true;
+        }
+    }
+
     private void FixedUpdate()
     {
         Move();
@@ -92,11 +100,6 @@ public class Tank : ShellCollider, IObjectToSpawn
         }
 
         return false;
-    }
-
-    public void FireSubscriber()
-    {
-        fireFlag = true;
     }
 
     public void Healed(float healthPoints)

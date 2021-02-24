@@ -62,13 +62,12 @@ public class Player : TankController
 
     private void HandleInput()
     {
+        fireInput = Input.GetAxis("Fire1");
         verticalInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
         if (verticalInput < -0.01f)
             horizontalInput = -horizontalInput;
         aimPosition = UnityEngine.Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (Input.GetMouseButton(0))
-            fireEvent.Invoke();
     }
 
     private void HandleUI()

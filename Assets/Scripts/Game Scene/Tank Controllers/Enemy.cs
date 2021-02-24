@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class EnemyController : TankController
+public class Enemy : TankController
 {
     [SerializeField] private GameObject healthBar;
     private GameObject player;
@@ -15,6 +15,8 @@ public class EnemyController : TankController
     {
         tank = GetComponent<Tank>();
         tank.destroyedEvent += OnTankDestroy;
+        // Enemy tank evokes fire constantly
+        fireInput = 1;
     }
 
     private void OnEnable()
@@ -42,8 +44,6 @@ public class EnemyController : TankController
     private void Update()
     {
         ManageMove();
-        // Enemy tank evokes fire constantly
-        fireEvent.Invoke();
     }
 
     private void LateUpdate()

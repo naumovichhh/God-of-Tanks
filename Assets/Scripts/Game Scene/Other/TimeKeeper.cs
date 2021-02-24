@@ -17,6 +17,11 @@ public class TimeKeeper : MonoBehaviour
         StartCoroutine(ShowTime());
     }
 
+    private void OnDestroy()
+    {
+        GameManager.Instance.Score = stopwatch.Elapsed;
+    }
+
     private IEnumerator ShowTime()
     {
         while (true)
@@ -25,5 +30,10 @@ public class TimeKeeper : MonoBehaviour
             text.SetText(timeSpan.ToString(@"m\:ss"));
             yield return new WaitForSeconds(0.16f);
         }
+    }
+
+    private void OnDestroyPlayer()
+    {
+        stopwatch.Stop();
     }
 }
