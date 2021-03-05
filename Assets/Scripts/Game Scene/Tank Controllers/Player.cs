@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class Player : TankController
 {
+    public UnityEvent gameOver;
     public HealthBar healthBar;
     public RechargeBar rechargeBar;
     public RedDamageScreen redDamageScreen;
@@ -22,6 +24,7 @@ public class Player : TankController
     private void Start()
     {
         aim.transform.SetSiblingIndex(100);
+        gameOver.AddListener(GameManager.Instance.OnGameOver);
     }
 
     // Read all inputs and update recharge bar
@@ -44,20 +47,28 @@ public class Player : TankController
     }
 
     private void OnTankDestroy()
+    {    
+        DeactivatePhysical();
+        gameOver.Invoke();
+    }
+
+    private void DeactivatePhysical()
     {
-        StartCoroutine(LoadGameOver());
+        Destroy(GetComponent<Rigidbody>());
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+
+        GetComponent<PlayerSounds>().Detach();
+        this.enabled = false;
+        GetComponent<Tank>().enabled = false;
     }
 
     public void HealthChanged(float health)
     {
         if (healthBar != null)
             healthBar.SetHealth(health);
-    }
-
-    private IEnumerator LoadGameOver()
-    {
-        yield return new WaitForSeconds(2);
-        SceneManager.LoadScene("Game over");
     }
 
     private void HandleInput()

@@ -3640,7 +3640,7 @@ BoxCollider:
   m_GameObject: {fileID: 595396603939555681}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.06463293, y: 1.3123078, z: 0.09321339}
   m_Center: {x: -0.05114439, y: -0.58302784, z: -0.00037306143}
@@ -5012,20 +5012,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 304b6736012d8a345b7378f5232e1532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 834564175348874737}
-        m_MethodName: FireSubscriber
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   healthBar: {fileID: 2209367932416547346, guid: adafab8ef5ba0244490222d7d1b2ec15,
     type: 3}
 --- !u!54 &110508903012697828
@@ -5057,13 +5043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turret: {fileID: 3711445389175330499}
-  turretTurnSpeed: 50
-  cannonPower: 32
-  maxSpeed: 2
-  acceleration: 100
-  turnSpeed: 50
-  rechargeDuration: 5
-  shellVelocity: 15
+  tankInfo: {fileID: 11400000, guid: 48f9faa198dfe124c90783b3f0d07b55, type: 2}
   firePoint: {fileID: 8904817415366926284}
   physicalTurret: {fileID: 595396603939839351}
   armorList:

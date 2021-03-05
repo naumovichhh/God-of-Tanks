@@ -9,7 +9,7 @@ public class SpawnManager : MonoBehaviour
     private const float insideXMax = 16, insideZMax = 8;
     private const float outsideXMax = 36, outsideZMax = 18;
     private const float outsideXMin = 20, outsideZMin = 10;
-    [SerializeField] WaveInformation waveInformation;
+    [SerializeField] private WaveInfo waveInfo;
     // Spawn manager should contain four poolers:
     // for enemies, strong enemies, shells, medicines,
     // which are stored in dictionary
@@ -63,7 +63,7 @@ public class SpawnManager : MonoBehaviour
     {
         yield return new WaitForSeconds(8);
         ++waveNumber;
-        waveInformation.NotifyWaveNumber(waveNumber);
+        waveInfo.WaveStarted(waveNumber);
     }
 
     private IEnumerator SpawnToolkits()

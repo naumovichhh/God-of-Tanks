@@ -17,8 +17,9 @@ public class TimeKeeper : MonoBehaviour
         StartCoroutine(ShowTime());
     }
 
-    private void OnDestroy()
+    public void OnGameOver()
     {
+        stopwatch.Stop();
         GameManager.Instance.Score = stopwatch.Elapsed;
     }
 

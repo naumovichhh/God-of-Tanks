@@ -24,6 +24,20 @@ public class PlayerSounds : MonoBehaviour
         tank.bounceEvent += OnRicochette;
     }
 
+    public void Detach()
+    {
+        turretSource.Stop();
+        driveSource.Stop();
+        tank.fireEvent -= OnFire;
+        tank.hitEvent -= OnHit;
+        tank.turretStartEvent -= OnTurretStart;
+        tank.turretEndEvent -= OnTurretEnd;
+        tank.driveStartEvent -= OnDriveStart;
+        tank.driveEndEvent -= OnDriveEnd;
+        tank.destroyedEvent -= OnDestroyed;
+        tank.bounceEvent -= OnRicochette;
+    }
+
     private void OnFire()
     {
         fireSource.Play();

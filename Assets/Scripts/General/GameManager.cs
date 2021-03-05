@@ -37,4 +37,15 @@ public class GameManager : MonoBehaviour
         if (Input.GetKey(KeyCode.Escape))
             SceneManager.LoadScene("Menu");
     }
+
+    public void OnGameOver()
+    {
+        StartCoroutine(GameOverCoroutine());
+    }
+
+    private IEnumerator GameOverCoroutine()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("Game over");
+    }
 }

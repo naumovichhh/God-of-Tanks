@@ -19,10 +19,13 @@ public class GridLayoutPopulate : MonoBehaviour
         var list = HighscoreStorage.Load();
         foreach (var item in list
             .OrderByDescending(i => i.Item2)
-            .Select((e, i) => $"{i+1}. {e.Item1} {e.Item2.ToString(@"m\:ss")}"))
+            .ThenBy(i => i.Item1)
+            .Select((e, i) => ($"{i+1}. {e.Item1}", e.Item2.ToString(@"m\:ss"))))
         {
             var instance = Instantiate(prefab, transform);
-            instance.GetComponent<TextMeshProUGUI>().SetText(item);
+            instance.GetComponent<TextMeshProUGUI>().SetText(item.Item1);
+            instance = Instantiate(prefab, transform);
+            instance.GetComponent<TextMeshProUGUI>().SetText(item.Item2);
         }
     }
 }

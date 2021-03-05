@@ -7,13 +7,7 @@ using UnityEngine.Events;
 public class Tank : ShellCollider, IObjectToSpawn
 {
     public Transform turret;
-    public float turretTurnSpeed;
-    [SerializeField] private float cannonPower;
-    [SerializeField] private float maxSpeed;
-    [SerializeField] private float acceleration;
-    [SerializeField] private float turnSpeed;
-    [SerializeField] private float rechargeDuration;
-    [SerializeField] private float shellVelocity;
+    [SerializeField] private TankInfo tankInfo;
     [SerializeField] private Transform firePoint;
     [SerializeField] private Transform physicalTurret;
     [SerializeField] private List<ColliderNumberPair> armorList;
@@ -33,7 +27,8 @@ public class Tank : ShellCollider, IObjectToSpawn
     private bool turretRotateFlag;
     private bool driveFlag;
 
-    public float rechargeDurationRead => rechargeDuration;
+    public float rechargeDurationRead => tankInfo.rechargeDuration;
+    public float turretTurnSpeed => tankInfo.turretTurnSpeed;
     public float rechargeProcess
     {
         get;
@@ -156,7 +151,7 @@ public class Tank : ShellCollider, IObjectToSpawn
 
             healthChangedEvent.Invoke(_health);
             if (_health <= 0)
-                destroyedEvent?.Invoke();
+                OnTankDestroy();
             
             shell.gameObject.SetActive(false);
         }
@@ -172,13 +167,19 @@ public class Tank : ShellCollider, IObjectToSpawn
         }
     }
 
+    private void OnTankDestroy()
+    {
+        ExplosionManager.instance.Explode(transform.position + Vector3.up);
+        destroyedEvent?.Invoke();
+    }
+
     private void Move()
     {
         // Move back or forward
-        rigidbody.AddRelativeForce(Vector3.forward * acceleration * tankController.verticalInput);
+        rigidbody.AddRelativeForce(Vector3.forward * tankInfo.acceleration * tankController.verticalInput);
         
         // Turn left of right
-        transform.Rotate(Vector3.up, tankController.horizontalInput * turnSpeed * Time.fixedDeltaTime);
+        transform.Rotate(Vector3.up, tankController.horizontalInput * tankInfo.turnSpeed * Time.fixedDeltaTime);
 
         if (tankController.verticalInput != 0 || tankController.horizontalInput != 0)
         {
@@ -203,7 +204,7 @@ public class Tank : ShellCollider, IObjectToSpawn
         // Recharge is considered completed, when rechargeProcess equals 1
         if (rechargeProcess != 1)
         {
-            rechargeProcess = rechargeStopwatch.ElapsedMilliseconds /  1000f / rechargeDuration;
+            rechargeProcess = rechargeStopwatch.ElapsedMilliseconds /  1000f / tankInfo.rechargeDuration;
             // Commit recharge completion
             if (rechargeProcess >= 1)
             {
@@ -237,8 +238,8 @@ public class Tank : ShellCollider, IObjectToSpawn
                 shell.transform.position = firePoint.position;
                 shell.transform.rotation = turret.rotation;
                 var shellScript = shell.GetComponent<Shell>();
-                shellScript.GetComponent<Rigidbody>().velocity = shell.transform.forward * shellVelocity;
-                shellScript.damage = cannonPower;
+                shellScript.GetComponent<Rigidbody>().velocity = shell.transform.forward * tankInfo.shellVelocity;
+                shellScript.damage = tankInfo.cannonPower;
                 shellScript.bounceAngle = 67;
                 shell.SetActive(true);
                 foreach (var bodyCollider in GetComponentsInChildren<Collider>())
@@ -252,9 +253,9 @@ public class Tank : ShellCollider, IObjectToSpawn
 
     private void RestrictMaxSpeed()
     {
-        if (rigidbody.velocity.magnitude > maxSpeed)
+        if (rigidbody.velocity.magnitude > tankInfo.maxSpeed)
         {
-            rigidbody.velocity = rigidbody.velocity.normalized * maxSpeed;
+            rigidbody.velocity = rigidbody.velocity.normalized * tankInfo.maxSpeed;
         }
     }
 
@@ -297,7 +298,7 @@ public class Tank : ShellCollider, IObjectToSpawn
             else if (vectorDistance < 0.04f)
                 turnSpeed = 10;
             else
-                turnSpeed = turretTurnSpeed;
+                turnSpeed = tankInfo.turretTurnSpeed;
             
             // Define the side where to turn turret
             float angle = Vector3.SignedAngle(-physicalTurret.up, rotationVector, Vector3.up);
