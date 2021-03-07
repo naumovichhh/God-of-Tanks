@@ -19,6 +19,12 @@ public class GameManager : MonoBehaviour
         set;
     }
 
+    public bool Won
+    {
+        get;
+        set;
+    }
+
     private void Awake()
     {
         if (instance == null)

@@ -7,18 +7,33 @@ public class WaveInfo : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI notification;
     [SerializeField] private TextMeshProUGUI display;
+    [SerializeField] private int wavesToWin;
 
     private void Awake()
     {
         WaveStarted(1);
     }
 
+    private void Start()
+    {
+        GameManager.Instance.Won = false;
+    }
+
     public void WaveStarted(int number)
     {
-        if (number < 1 || number > 10)
+        if (number < 1)
             throw new ArgumentOutOfRangeException(nameof(number));
         
-        Notify(number);
+        if (number == wavesToWin + 1)
+        {
+            GameManager.Instance.Won = true;
+            Notify(number, true);
+        }
+        else
+        {
+            Notify(number);
+        }
+
         ChangeDisplay(number);
     }
 
@@ -27,7 +42,7 @@ public class WaveInfo : MonoBehaviour
         display.SetText($"{number}{GetSuffix(number)} wave");
     }
 
-    private void Notify(int number)
+    private void Notify(int number, bool won = false)
     {
         if (number == 1)
         {
@@ -38,7 +53,13 @@ public class WaveInfo : MonoBehaviour
             string passedWave, upcomingWave;
             passedWave = $"{number-1}{GetSuffix(number-1)} wave is passed";
             upcomingWave = $"{number}{GetSuffix(number)} wave is on the way";
-            Show($"{passedWave}\n{upcomingWave}");
+            string eventualText = $"{passedWave}\n{upcomingWave}";
+            if (won)
+            {
+                eventualText = "You have won!\n" + eventualText;
+            }
+
+            Show(eventualText);
         }
     }
 
@@ -51,7 +72,7 @@ public class WaveInfo : MonoBehaviour
 
     private IEnumerator FadeText()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         notification.CrossFadeAlpha(0, 3, false);
     }
 

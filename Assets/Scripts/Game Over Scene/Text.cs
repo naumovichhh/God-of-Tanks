@@ -3,16 +3,22 @@ using TMPro;
 
 public class Text : MonoBehaviour
 {
-    private TextMeshProUGUI text;
+    private TextMeshProUGUI textMesh;
 
     private void Awake()
     {
-        text = GetComponent<TextMeshProUGUI>();
+        textMesh = GetComponent<TextMeshProUGUI>();
     }
 
     // Start is called before the first frame update
     private void Start()
     {
-        text.SetText($"Game over. Your score is {GameManager.Instance.Score.ToString(@"m\:ss")}.\nEnter player name:");
+        string text = $"Your score is {GameManager.Instance.Score.ToString(@"m\:ss")}.\nEnter player name:";
+        if (GameManager.Instance.Won)
+            text = $"You won! {text}";
+        else
+            text = $"You lost. {text}";
+        
+        textMesh.SetText(text);
     }
 }

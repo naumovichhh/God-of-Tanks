@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Enemy : TankController
 {
+    public bool cleverAiming;
     [SerializeField] private GameObject healthBar;
     private GameObject player;
     private Vector3 moveDestination;
@@ -31,7 +32,6 @@ public class Enemy : TankController
         // Move destination and aim point will be updated
         // with a certain interval
         StartCoroutine(MoveDestinationCoroutine());
-        bool cleverAiming = Random.Range(1, 3) == 2;
         if (cleverAiming)
             StartCoroutine(TurretCleverDestinationCoroutine());
         else

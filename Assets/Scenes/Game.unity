@@ -2847,6 +2847,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   notification: {fileID: 774986110}
   display: {fileID: 1717331663}
+  wavesToWin: 3
 --- !u!1 &1870703885
 GameObject:
   m_ObjectHideFlags: 0

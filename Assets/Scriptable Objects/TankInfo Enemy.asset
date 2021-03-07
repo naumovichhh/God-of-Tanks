@@ -18,4 +18,4 @@ MonoBehaviour:
   acceleration: 200
   turnSpeed: 50
   rechargeDuration: 5
-  shellVelocity: 15
+  shellVelocity: 21

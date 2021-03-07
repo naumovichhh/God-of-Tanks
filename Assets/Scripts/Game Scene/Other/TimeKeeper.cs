@@ -32,9 +32,4 @@ public class TimeKeeper : MonoBehaviour
             yield return new WaitForSeconds(0.16f);
         }
     }
-
-    private void OnDestroyPlayer()
-    {
-        stopwatch.Stop();
-    }
 }

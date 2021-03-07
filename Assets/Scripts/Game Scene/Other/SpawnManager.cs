@@ -17,7 +17,10 @@ public class SpawnManager : MonoBehaviour
     private float enemySpawnFrequencyCoefficient = 1;
     private bool enemySpawnPause;
     private int waveNumber = 1;
-    private const float pauseDuration = 25;
+    private const float pauseDuration = 33;
+    private float cleverPossibilityCoeff = 1;
+    private float usualEnemyCleverPossibilityCoeff = 1;
+    private float strongEnemyCleverPossibilityCoeff = 1;
 
     private void Start()
     {
@@ -28,15 +31,15 @@ public class SpawnManager : MonoBehaviour
             poolers.Add(pooler.objectType, pooler);
         }
 
-        StartCoroutine(SpawnToolkits());
-        StartCoroutine(SpawnEnemies());
-        StartCoroutine(SpawnStrongEnemies());
+        StartCoroutine(SpawnToolkitsCoroutine());
+        StartCoroutine(SpawnEnemiesCoroutine());
+        StartCoroutine(SpawnStrongEnemiesCoroutine());
         StartCoroutine(ManageWaves());
     }
 
     private void Update()
     {
-        enemySpawnFrequencyCoefficient /= (float)Math.Pow(1.007, Time.deltaTime);
+        enemySpawnFrequencyCoefficient /= (float)Math.Pow(1.006, Time.deltaTime);
     }
 
     private IEnumerator ManageWaves()
@@ -49,7 +52,7 @@ public class SpawnManager : MonoBehaviour
             enemySpawnFrequencyCoefficient = 1;
             enemySpawnPause = true;
             StartCoroutine(BreakPause());
-            StartCoroutine(NotifyUserAboutWaves());
+            StartCoroutine(CompletelyPassWave());
         }
     }
 
@@ -59,23 +62,23 @@ public class SpawnManager : MonoBehaviour
         enemySpawnPause = false;
     }
 
-    private IEnumerator NotifyUserAboutWaves()
+    private IEnumerator CompletelyPassWave()
     {
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(16);
         ++waveNumber;
         waveInfo.WaveStarted(waveNumber);
     }
 
-    private IEnumerator SpawnToolkits()
+    private IEnumerator SpawnToolkitsCoroutine()
     {
         while (true)
         {
             yield return new WaitForSeconds(UnityEngine.Random.Range(23, 30));
-            Spawn("Toolkit", true);
+            SpawnToolkit();
         }
     }
 
-    private IEnumerator SpawnEnemies()
+    private IEnumerator SpawnEnemiesCoroutine()
     {
         while (true)
         {
@@ -83,11 +86,12 @@ public class SpawnManager : MonoBehaviour
             if (enemySpawnPause)
                 yield return new WaitForSeconds(pauseDuration);
 
-            Spawn("Enemy", false);
+            bool cleverAiming = GetCleverAiming(false);
+            SpawnEnemy("Enemy", cleverAiming);
         }
     }
 
-    private IEnumerator SpawnStrongEnemies()
+    private IEnumerator SpawnStrongEnemiesCoroutine()
     {
         while (true)
         {
@@ -95,24 +99,37 @@ public class SpawnManager : MonoBehaviour
             if (enemySpawnPause)
                 yield return new WaitForSeconds(pauseDuration);
             
-            Spawn("Strong Enemy", false);
+            bool cleverAiming = GetCleverAiming(true);
+            SpawnEnemy("Strong Enemy", cleverAiming);
         }
     }
 
-    private void Spawn(string poolerKey, bool insideVisibleField)
+    private void SpawnEnemy(string poolerKey, bool cleverAiming)
     {
         var pooledObject = poolers[poolerKey].GetPooledObject();
         do
         {
             float xPosition, zPosition;
-            if (insideVisibleField)
-            {
-                (xPosition, zPosition) = GetPositionInsideVisible();
-            }
-            else
-            {
-                (xPosition, zPosition) = GetPositionOutsideVisible();
-            }
+            (xPosition, zPosition) = GetPositionOutsideVisible();
+
+            Vector3 position = new Vector3(xPosition, pooledObject.transform.position.y, zPosition);
+            pooledObject.transform.position = position;
+        } while (pooledObject.GetComponent<IObjectToSpawn>().IsOverlapped());
+
+        pooledObject.GetComponent<Enemy>().cleverAiming = cleverAiming;
+        // All the objects are pooled, so they should just
+        // be set active
+        pooledObject.SetActive(true);
+    }
+
+    private void SpawnToolkit()
+    {
+        string poolerKey = "Toolkit";
+        var pooledObject = poolers[poolerKey].GetPooledObject();
+        do
+        {
+            float xPosition, zPosition;
+            (xPosition, zPosition) = GetPositionInsideVisible();
 
             Vector3 position = new Vector3(xPosition, pooledObject.transform.position.y, zPosition);
             pooledObject.transform.position = position;
@@ -120,6 +137,48 @@ public class SpawnManager : MonoBehaviour
         // All the objects are pooled, so they should just
         // be set active
         pooledObject.SetActive(true);
+    }
+
+    private bool GetCleverAiming(bool strongEnemy)
+    {
+        bool result;
+        result = Random.Range(0f, 100f) * cleverPossibilityCoeff * GetSecondCoeff() > 50;
+
+        if (result)
+        {
+            if (strongEnemy)
+            {
+                cleverPossibilityCoeff /= 1.44f;
+                strongEnemyCleverPossibilityCoeff /= 1.37f;
+            }
+            else
+            {
+                cleverPossibilityCoeff /= 1.2f;
+                usualEnemyCleverPossibilityCoeff /= 1.37f;
+            }
+        }
+        else
+        {
+            if (strongEnemy)
+            {
+                cleverPossibilityCoeff *= 1.44f;
+                strongEnemyCleverPossibilityCoeff *= 1.37f;
+            }
+            else
+            {
+                cleverPossibilityCoeff *= 1.2f;
+                usualEnemyCleverPossibilityCoeff *= 1.37f;
+            }
+        }
+
+        return result;
+
+        float GetSecondCoeff()
+        {
+            return strongEnemy ?
+            strongEnemyCleverPossibilityCoeff : 
+            usualEnemyCleverPossibilityCoeff;
+        }
     }
 
     private (float, float) GetPositionInsideVisible()

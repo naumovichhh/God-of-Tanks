@@ -485,13 +485,14 @@ MonoBehaviour:
       m_Calls: []
   m_text: "This is a top-down game, where you manage M4 Sherman tank. Your goal is
     to survive for as long as possible, fighting arriving waves of enemies.  Each
-    subsequent wave becomes tougher to survive.\n\nWhite enemies are more powerful,
-    than grey. Some enemies won't aim at you, but some will.\n\nThe most durable
-    armor is located in front. Armor can either reduce damage, or completely absorb
-    shell.  The bigger angle of hit, the less damage. When angle of hit is too big,
-    ricochet is possible. \n\nUse your front armor to reflect enemies' shots. Use
-    toolkits to recover from damage.\n\nControls:\nWASD or Arrow Keys \u2013 drive
-    tank.\nMouse Cursor points aim.\nLeft Click or Left Ctrl \u2013 fire."
+    subsequent wave becomes tougher to survive. The number of waves is infinite,
+    but the game is considered won after 3 waves passed.\n\nWhite enemies are more
+    powerful, than grey. Some enemies won't aim at you, but some will.\n\nThe most
+    durable armor is located in front. Armor can either reduce damage, or completely
+    absorb shell.  The bigger angle of hit, the less damage. When angle of hit is
+    too big, ricochet is possible. \n\nUse your front armor to reflect enemies' shots.
+    Use toolkits to recover from damage.\n\nControls:\nWASD or Arrow Keys \u2013
+    drive tank.\nMouse Cursor points aim.\nLeft Click or Left Ctrl \u2013 fire."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -536,7 +537,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 194
+  m_firstOverflowCharacterIndex: 266
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -560,12 +561,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 729626831}
-    characterCount: 672
+    characterCount: 758
     spriteCount: 0
-    spaceCount: 123
-    wordCount: 115
+    spaceCount: 139
+    wordCount: 131
     linkCount: 0
-    lineCount: 15
+    lineCount: 17
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
