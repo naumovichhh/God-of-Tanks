@@ -1961,8 +1961,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.18933256, y: 4.6641426, z: 2.1450098}
-  m_Center: {x: 0.9719831, y: 0.018951494, z: 1.0744839}
+  m_Size: {x: 0.18933256, y: 4.577097, z: 2.1450098}
+  m_Center: {x: 0.9719831, y: -0.024571218, z: 1.0744839}
 --- !u!65 &8293096695022707109
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1974,8 +1974,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1944983, y: 4.6588035, z: 2.1450098}
-  m_Center: {x: -0.9694113, y: 0.021621484, z: 1.0744839}
+  m_Size: {x: 0.1944983, y: 4.577097, z: 2.1450098}
+  m_Center: {x: -0.9694113, y: -0.02457122, z: 1.0744839}
 --- !u!65 &8664701341271600641
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1987,8 +1987,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.1070917, y: 0.18261588, z: 2.1450098}
-  m_Center: {x: -0.0004371007, y: 2.2673197, z: 1.074484}
+  m_Size: {x: 2.1070917, y: 0.15405154, z: 2.1450098}
+  m_Center: {x: -0.0004371007, y: 2.2199745, z: 1.074484}
 --- !u!1 &6486815715970224571
 GameObject:
   m_ObjectHideFlags: 0
@@ -3991,6 +3991,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f413a92984edb0b4dbd6e1941a94672e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOver:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: OnGameOver
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   healthBar: {fileID: 0}
   rechargeBar: {fileID: 0}
   redDamageScreen: {fileID: 0}
@@ -4015,11 +4029,11 @@ MonoBehaviour:
   - collider: {fileID: 6486943812399885386}
     number: 0.3
   - collider: {fileID: 3316380605352378667}
-    number: 0.7
+    number: 0.6
   - collider: {fileID: 8293096695022707109}
-    number: 0.7
+    number: 0.6
   - collider: {fileID: 8664701341271600641}
-    number: 0.7
+    number: 0.6
   healthChangedEvent:
     m_PersistentCalls:
       m_Calls:

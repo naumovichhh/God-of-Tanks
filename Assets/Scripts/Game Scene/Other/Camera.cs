@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class Camera : MonoBehaviour
 {
-    private float screenWidth;
-    private float screenHeight;
+    public UnityEvent sizeChanged;
+    private Vector2 resolution;
 
     private void Start()
     {
@@ -16,9 +17,8 @@ public class Camera : MonoBehaviour
         // If screen size changed, then there is need to change
         // camera pixelRect, because camera field of view
         // should always fit the game field (16:9)
-        if (screenWidth != Screen.width || screenHeight != Screen.height)
+        if (resolution.x != Screen.width || resolution.y != Screen.height)
         {
-            AssignWidthAndHeight();
             var camera = GetComponent<UnityEngine.Camera>();
             if ((float)Screen.width / (float)Screen.height > 1367f / 768f)
             {
@@ -32,13 +32,16 @@ public class Camera : MonoBehaviour
             {
                 camera.pixelRect = new Rect(0, 0, Screen.width, Screen.height);
             }
+            
+            AssignResolution();
+            sizeChanged.Invoke();
         }
     }
 
-    private void AssignWidthAndHeight()
+    private void AssignResolution()
     {
-        screenWidth = Screen.width;
-        screenHeight = Screen.height;
+        resolution.x = Screen.width;
+        resolution.y = Screen.height;
     }
 
     private void CutWidth(UnityEngine.Camera camera)

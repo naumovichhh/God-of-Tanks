@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -26,6 +28,7 @@ public class Tank : ShellCollider, IObjectToSpawn
     public event Action bounceEvent;
     private bool turretRotateFlag;
     private bool driveFlag;
+    private bool justCollided;
 
     public float rechargeDurationRead => tankInfo.rechargeDuration;
     public float turretTurnSpeed => tankInfo.turretTurnSpeed;
@@ -83,6 +86,29 @@ public class Tank : ShellCollider, IObjectToSpawn
         Fire();
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (justCollided)
+            return;
+        
+        Tank tank = collision.gameObject.GetComponent<Tank>();
+        if (tank != null)
+        {
+            float velocity = collision.relativeVelocity.magnitude;
+            if (velocity > 1.9f)
+            {
+                GetDamaged(velocity * 2.5f);
+            }
+
+            justCollided = true;
+            Task.Run(() =>
+            {
+                Thread.Sleep(100);
+                justCollided = false;
+            });
+        }
+    }
+
     public bool IsOverlapped()
     {
         BoxCollider[] colliders = GetComponentsInChildren<BoxCollider>();
@@ -117,7 +143,7 @@ public class Tank : ShellCollider, IObjectToSpawn
         }
         else
         {
-            GetDamaged();
+            GetDamagedByShell();
         }
 
         bool ShouldBounce()
@@ -135,7 +161,7 @@ public class Tank : ShellCollider, IObjectToSpawn
             bounceEvent?.Invoke();
         }
 
-        void GetDamaged()
+        void GetDamagedByShell()
         {
             float damageAmount = CountDamage();
             if (damageAmount == 0)
@@ -147,12 +173,7 @@ public class Tank : ShellCollider, IObjectToSpawn
                 hitEvent?.Invoke(damageAmount);
             }
 
-            _health -= damageAmount;
-
-            healthChangedEvent.Invoke(_health);
-            if (_health <= 0)
-                OnTankDestroy();
-            
+            GetDamaged(damageAmount);
             shell.gameObject.SetActive(false);
         }
 
@@ -165,6 +186,14 @@ public class Tank : ShellCollider, IObjectToSpawn
             else
                 return 0;
         }
+    }
+
+    private void GetDamaged(float damageAmount)
+    {
+        _health -= damageAmount;
+        healthChangedEvent.Invoke(_health);
+        if (_health <= 0)
+            OnTankDestroy();
     }
 
     private void OnTankDestroy()

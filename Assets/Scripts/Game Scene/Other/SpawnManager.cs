@@ -48,7 +48,7 @@ public class SpawnManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(waveTimer);
-            waveTimer *= 1.33f;
+            waveTimer *= 1.25f;
             enemySpawnFrequencyCoefficient = 1;
             enemySpawnPause = true;
             StartCoroutine(BreakPause());
@@ -64,7 +64,7 @@ public class SpawnManager : MonoBehaviour
 
     private IEnumerator CompletelyPassWave()
     {
-        yield return new WaitForSeconds(16);
+        yield return new WaitForSeconds(20);
         ++waveNumber;
         waveInfo.WaveStarted(waveNumber);
     }

@@ -19,15 +19,14 @@ public class HighscoreStorage
     {
         Wrapper wrapper = null;
 
-        if (File.Exists(path))
-        {
-            string content = File.ReadAllText(path);
-            wrapper = JsonUtility.FromJson<Wrapper>(content);
-        }
-        else
+        if (!File.Exists(path))
         {
             File.Create(path).Dispose();
+            Initialize();
         }
+
+        string content = File.ReadAllText(path);
+        wrapper = JsonUtility.FromJson<Wrapper>(content);
 
         if (wrapper == null)
         {
@@ -39,6 +38,29 @@ public class HighscoreStorage
         }
 
         return wrapper;
+    }
+
+    private static void Initialize()
+    {
+        Wrapper wrapper = new Wrapper();
+        List<SerializableTuple> list = new List<SerializableTuple>()
+        {
+            new SerializableTuple("Mike", 43),
+            new SerializableTuple("Harry", 173),
+            new SerializableTuple("BigJohn2", 113),
+            new SerializableTuple("Mr_Alex_UA", 232),
+            new SerializableTuple("Ultrazdravy", 210),
+            new SerializableTuple("S-Y", 39),
+            new SerializableTuple("Flashmob.", 48)
+        };
+
+        foreach (var item in list)
+        {
+            wrapper.data.Add(item);
+        }
+
+        string json = JsonUtility.ToJson(wrapper);
+        File.WriteAllText(path, json);
     }
 
     public static List<Tuple<string, TimeSpan>> Load()
@@ -68,7 +90,7 @@ public class HighscoreStorage
 [Serializable]
 public class Wrapper
 {
-    public List<SerializableTuple> data;
+    public List<SerializableTuple> data = new List<SerializableTuple>();
 }
 
 [Serializable]
@@ -79,6 +101,12 @@ public class SerializableTuple
         Item1 = tuple.Item1;
         Item2 = (uint)
         tuple.Item2.TotalSeconds;
+    }
+
+    public SerializableTuple(string Item1, uint Item2)
+    {
+        this.Item1 = Item1;
+        this.Item2 = Item2;
     }
 
     public string Item1;

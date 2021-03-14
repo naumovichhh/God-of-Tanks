@@ -10,6 +10,14 @@ namespace GameOverScene
         [SerializeField]
         private TMP_InputField input;
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                OnClick();
+            }
+        }
+
         public void OnClick()
         {
             HighscoreStorage
