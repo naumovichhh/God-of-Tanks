@@ -25,7 +25,7 @@ public class ObjectPooler : MonoBehaviour
         for (uint i = 0; i < amountToPool; ++i)
         {
             GameObject obj = Instantiate(objectToPool);
-            obj.transform.parent = transform;
+            obj.transform.SetParent(transform);
             obj.SetActive(false);
             if (isShell)
             {

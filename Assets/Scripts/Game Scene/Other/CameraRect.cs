@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class Camera : MonoBehaviour
+public class CameraRect : MonoBehaviour
 {
     public UnityEvent sizeChanged;
     private Vector2 resolution;
